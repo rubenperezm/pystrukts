@@ -23,7 +23,7 @@ A Python library for data structures. This library provides more than 20 advance
 - [ ] Disjoint Set
 - [ ] Skip List
 - [ ] Trie
-- [ ] Max Heap
+- [x] Max Heap
 - [ ] Graph (Adjacency List)
 - [ ] Graph (Adjacency Matrix)
 - [ ] Graph (Edge List)
