@@ -1,0 +1,10 @@
+name: "Test"
+runs:
+  using: "composite"
+  steps:
+    - name: Install Pytest
+      run: python -m pip install pytest-cov
+      shell: bash
+    - name: Run tests
+      run: pytest src/tests --cov --cov-report=xml
+      shell: bash
