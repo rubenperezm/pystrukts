@@ -58,7 +58,7 @@ class SinglyLinkedList:
     __length: int = 0
     __circular: bool = False
 
-    def init(self, circular: bool = False):
+    def __init__(self, circular: bool = False):
         '''
         Initialize the SinglyLinkedList.
 
@@ -85,17 +85,10 @@ class SinglyLinkedList:
         Return an iterator for the list.
 
         Returns:
-            out (SinglyLinkedList): The SinglyLinkedList instance.
-        '''
+            out (Iterator): The iterator for the list.
 
-        return self
-
-    def __next__(self):
-        '''
-        Return the next element in the list.
-
-        Returns:
-            out (any): The next element in the list.
+        Yields:
+            out (any): The data in the list.
         '''
 
         current_node = self.__head
