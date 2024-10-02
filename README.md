@@ -20,7 +20,7 @@ A Python library for data structures. This library provides more than 20 advance
 - [ ] Fenwick Tree
 - [ ] Disjoint Set
 - [ ] Skip List
-- [ ] Trie
+- [x] Trie
 - [x] Max Heap
 - [ ] Graph (Adjacency List)
 - [ ] Graph (Adjacency Matrix)
