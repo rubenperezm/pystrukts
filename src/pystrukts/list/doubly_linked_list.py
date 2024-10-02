@@ -1,38 +1,41 @@
+# pylint: disable=duplicate-code
 '''
-Singly Linked List Module.
+Doubly Linked List Module.
 
-This module implements a Singly Linked List and Node data structures.
+This module implements a Doubly Linked List and Node data structures.
 '''
 
 from dataclasses import dataclass
 
 @dataclass
-class SinglyLinkedNode:
+class DoublyLinkedNode:
     '''
-    SinglyLinkedNode Class.
+    DoublyLinkedNode Class.
 
     Attributes:
         data (any): The data stored in the node.
-        next (SinglyLinkedNode): The next node in the list.
+        prev (DoublyLinkedNode): The previous node in the list.
+        next (DoublyLinkedNode): The next node in the list.
 
     Methods:
         `__str__()`: Return the string representation of the node.
     '''
 
     data: any = None
-    next: 'SinglyLinkedNode' = None
+    prev: 'DoublyLinkedNode' = None
+    next: 'DoublyLinkedNode' = None
 
     def __str__(self):
-        return f"SinglyLinkedNode({self.data}){' -> ' + str(self.next) if self.next else ''}"
+        return f"DoublyLinkedNode({self.data}){' <-> ' + str(self.next) if self.next else ''}"
 
 @dataclass
-class SinglyLinkedList:
+class DoublyLinkedList:
     '''
-    SinglyLinkedList Class.
+    DoublyLinkedList Class.
 
     Attributes:
-        __head (SinglyLinkedNode): The head of the list.
-        __tail (SinglyLinkedNode): The tail of the list.
+        __head (DoublyLinkedNode): The head of the list.
+        __tail (DoublyLinkedNode): The tail of the list.
         __length (int): The length of the list.
         __circular (bool): Whether the list is circular.
 
@@ -53,20 +56,20 @@ class SinglyLinkedList:
         `clear()`: Clear the list.
     '''
 
-    __head: 'SinglyLinkedNode' = None
-    __tail: 'SinglyLinkedNode' = None
+    __head: 'DoublyLinkedNode' = None
+    __tail: 'DoublyLinkedNode' = None
     __length: int = 0
     __circular: bool = False
 
     def __init__(self, circular: bool = False):
         '''
-        Initialize the SinglyLinkedList.
+        Initialize the DoublyLinkedList.
 
         Args:
             circular (bool): Whether the list is circular.
 
         Returns:
-            out (SinglyLinkedList): The SinglyLinkedList instance.
+            out (DoublyLinkedList): The DoublyLinkedList instance.
         '''
 
         self.__head = None
@@ -75,7 +78,7 @@ class SinglyLinkedList:
         self.__circular = circular
 
     def __str__(self):
-        return f"SinglyLinkedList({self.__head})"
+        return f"DoublyLinkedList({self.__head})"
 
     def __len__(self):
         return self.__length
@@ -132,14 +135,16 @@ class SinglyLinkedList:
             self.append(data)
             return
 
-        new_node = SinglyLinkedNode(data)
+        new_node = DoublyLinkedNode(data)
 
         current_node = self.__head
         for _ in range(index - 1):
             current_node = current_node.next
 
         new_node.next = current_node.next
+        current_node.next.prev = new_node
         current_node.next = new_node
+        new_node.prev = current_node
 
         self.__length += 1
 
@@ -151,7 +156,7 @@ class SinglyLinkedList:
             data (any): The data to be appended.
         '''
 
-        new_node = SinglyLinkedNode(data)
+        new_node = DoublyLinkedNode(data)
 
         if self.__length == 0:
             self.__head = new_node
@@ -159,10 +164,12 @@ class SinglyLinkedList:
 
         else:
             self.__tail.next = new_node
+            new_node.prev = self.__tail
             self.__tail = new_node
 
         if self.__circular:
             self.__tail.next = self.__head
+            self.__head.prev = self.__tail
 
         self.__length += 1
 
@@ -174,7 +181,7 @@ class SinglyLinkedList:
             data (any): The data to be appended.
         '''
 
-        new_node = SinglyLinkedNode(data)
+        new_node = DoublyLinkedNode(data)
 
         if self.__length == 0:
             self.__head = new_node
@@ -182,10 +189,12 @@ class SinglyLinkedList:
 
         else:
             new_node.next = self.__head
+            self.__head.prev = new_node
             self.__head = new_node
 
         if self.__circular:
             self.__tail.next = self.__head
+            self.__head.prev = self.__tail
 
         self.__length += 1
 
@@ -221,7 +230,9 @@ class SinglyLinkedList:
 
         removed_node = current_node.next
         current_node.next = removed_node.next
+        current_node.next.prev = current_node
         removed_node.next = None
+        removed_node.prev = None
 
         self.__length -= 1
 
@@ -247,13 +258,12 @@ class SinglyLinkedList:
             self.__tail = None
 
         else:
-            current_node = self.__head
-            while current_node.next != self.__tail:
-                current_node = current_node.next
-
             removed_node = self.__tail
-            current_node.next = removed_node.next
-            self.__tail = current_node
+            self.__tail = self.__tail.prev
+            self.__tail.next = removed_node.next
+
+            if self.__circular:
+                self.__head.prev = self.__tail
 
         self.__length -= 1
 
@@ -281,6 +291,7 @@ class SinglyLinkedList:
 
         else:
             self.__head = self.__head.next
+            self.__head.prev = removed_node.prev
 
             if self.__circular:
                 self.__tail.next = self.__head
@@ -309,9 +320,14 @@ class SinglyLinkedList:
         if index < 0 or index >= self.__length:
             raise IndexError("Index out of bounds")
 
-        current_node = self.__head
-        for _ in range(index):
-            current_node = current_node.next
+        if index < self.__length // 2:
+            current_node = self.__head
+            for _ in range(index):
+                current_node = current_node.next
+        else:
+            current_node = self.__tail
+            for _ in range(self.__length - index - 1):
+                current_node = current_node.prev
 
         return current_node.data
 

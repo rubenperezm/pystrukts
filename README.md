@@ -2,9 +2,10 @@
 
 A Python library for data structures. This library provides more than 20 advanced data structures not available in the Python standard library, including:
 
-- [ ] Singly Linked List
-- [ ] Doubly Linked List
-- [ ] Circular Linked List (Single, Double)
+- [x] Singly Linked List
+- [x] Doubly Linked List
+- [x] Circular Linked List (Single, Double)
+- [ ] Generic Tree
 - [ ] Binary Search Tree
 - [ ] Ternary Search Tree
 - [ ] Suffix Tree
@@ -13,10 +14,7 @@ A Python library for data structures. This library provides more than 20 advance
 - [ ] Splay Tree
 - [ ] B-Tree
 - [ ] B+ Tree
-- [ ] B* Tree
 - [ ] R-Tree
-- [ ] Quadtree
-- [ ] Octree
 - [ ] Interval Tree
 - [ ] Segment Tree
 - [ ] Fenwick Tree
