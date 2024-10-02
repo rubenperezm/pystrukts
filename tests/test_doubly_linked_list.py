@@ -1,5 +1,5 @@
 import pytest
-from src.pystrukts import DoublyLinkedList, DoublyLinkedNode
+from src.pystrukts.list import DoublyLinkedList, DoublyLinkedNode
 
 def test_node_initialization():
     node = DoublyLinkedNode(1)

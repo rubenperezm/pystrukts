@@ -1,5 +1,5 @@
 import pytest
-from src.pystrukts import SinglyLinkedList, SinglyLinkedNode
+from src.pystrukts.list import SinglyLinkedList, SinglyLinkedNode
 
 def test_node_initialization():
     node = SinglyLinkedNode(1)
