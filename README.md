@@ -18,10 +18,9 @@ A Python library for data structures. This library provides more than 20 advance
 - [ ] Interval Tree
 - [ ] Segment Tree
 - [ ] Fenwick Tree
-- [ ] Disjoint Set
+- [x] Disjoint Set
 - [ ] Skip List
 - [x] Trie
 - [x] Max Heap
-- [ ] Graph (Adjacency List)
 - [ ] Graph (Adjacency Matrix)
 - [ ] Graph (Edge List)
