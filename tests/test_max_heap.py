@@ -1,5 +1,5 @@
 import pytest
-from src.pystrukts.max_heap import MaxHeap
+from pystrukts import MaxHeap
 
 def test_heap_initialization():
     heap = MaxHeap([3, 1, 5, 7, 2])

@@ -1,5 +1,5 @@
 import pytest
-from src.pystrukts.tree import Trie, TrieNode
+from pystrukts.tree import Trie, TrieNode
 
 def test_trie_node_initialization():
     node = TrieNode()
