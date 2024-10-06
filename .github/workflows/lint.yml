@@ -16,4 +16,4 @@ jobs:
         
     - name: Analysing the code with pylint
       run: |
-        pylint pystrukts
+        pylint . --ignore=tests
