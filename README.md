@@ -22,5 +22,5 @@ A Python library for data structures. This library provides more than 20 advance
 - [ ] Skip List
 - [x] Trie
 - [x] Max Heap
-- [ ] Graph (Adjacency Matrix)
-- [ ] Graph (Edge List)
+- [x] Graph (Adjacency Matrix)
+- [ ] Graph (Adjacency List)
