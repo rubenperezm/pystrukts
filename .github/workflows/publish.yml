@@ -12,7 +12,7 @@ jobs:
 
     environment:
       name: pypi
-      url: https://test.pypi.org/p/pystrukts
+      url: https://pypi.org/p/pystrukts
 
     permissions:
       id-token: write
