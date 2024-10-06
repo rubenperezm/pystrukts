@@ -1,0 +1,33 @@
+name: Publish package to PyPI
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  build:
+    name: Build and Publish to PyPI
+    runs-on: ubuntu-latest
+
+    environment:
+      name: pypi
+      url: https://test.pypi.org/p/pystrukts
+
+    permissions:
+      id-token: write
+      
+    steps:
+    - uses: actions/checkout@v4
+    - uses: ./.github/actions/setup
+    - uses: ./.github/actions/test
+    
+    - name: Package the extension
+      run: |
+        pip install build
+        python -m build --sdist
+
+    - name: Publish distribution to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        skip-existing: true

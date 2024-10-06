@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=42", "wheel", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pystrukts"
+description = "Advanced data structures for Python."
+readme = "README.md"
+requires-python = ">=3.8"
+dynamic = ["version"]
+license = { file = "LICENSE" }
+
+dependencies = [
+]
+
+authors = [
+    { name = "Rubén Pérez Mercado", email = "rubenpermerc@gmail.com" }
+]
+
+[tool.setuptools_scm]
+write_to = "pystrukts/_version.py"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pylint",
+]
