@@ -17,7 +17,6 @@ class Graph(metaclass=ABCMeta):
         remove_edge(x: int, y: int) -> None: Remove an edge between two vertices.
         add_vertex() -> None: Add an isolated vertex to the graph.
         remove_vertex(x: int) -> None: Remove a vertex from the graph.
-        get_edge_weight(x: int, y: int) -> float: Get the weight of an edge.
     '''
 
     @abstractmethod
@@ -88,17 +87,4 @@ class Graph(metaclass=ABCMeta):
 
         Args:
             x (int): The vertex.
-        '''
-
-    @abstractmethod
-    def get_edge_weight(self, x: int, y: int) -> float:
-        '''
-        Get the weight of an edge.
-
-        Args:
-            x (int): The source vertex.
-            y (int): The destination vertex.
-
-        Returns:
-            out (float): The weight of the edge.
         '''
