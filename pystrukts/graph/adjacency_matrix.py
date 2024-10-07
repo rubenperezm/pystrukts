@@ -32,7 +32,7 @@ class AdjacencyMatrix(Graph):
         set_edge_weight(x: int, y: int, w: float) -> None: Set the weight of an edge.
     '''
 
-    def __init__(self, num_vertices: int = None, directed: bool = False,
+    def __init__(self, num_vertices: int = None, directed: bool = True,
                  matrix: list = None, no_edge_value: float = float('inf')) -> None:
         '''
         Initialize the adjacency matrix.
@@ -51,10 +51,12 @@ class AdjacencyMatrix(Graph):
             raise ValueError('You must specify either the number of vertices \
                              or the adjacency matrix.')
 
+        if num_vertices and num_vertices < 0:
+            raise ValueError('The number of vertices must be a non-negative integer.')
+
         if matrix and num_vertices:
             warn('The number of vertices will be ignored, as an adjacency matrix was provided.')
 
-        self.num_vertices = len(matrix) if matrix is not None else num_vertices
         self.directed = directed
         self.no_edge_value = no_edge_value
 
@@ -64,10 +66,10 @@ class AdjacencyMatrix(Graph):
                     raise ValueError('The number of columns in the matrix must be \
                                       equal to the number of vertices.')
 
-            self.matrix = self._copy_matrix(matrix, directed)
-        elif num_vertices < 0:
-            raise ValueError('The number of vertices must be a non-negative integer.')
+            self.num_vertices = len(matrix)
+            self.matrix = self._copy_matrix(matrix)
         else:
+            self.num_vertices = int(num_vertices)
             self.matrix = [[no_edge_value for _ in range(num_vertices)]
                            for _ in range(num_vertices)]
 
@@ -82,7 +84,7 @@ class AdjacencyMatrix(Graph):
         return AdjacencyMatrix(directed = self.directed,
                                matrix = self.matrix, no_edge_value = self.no_edge_value)
 
-    def _copy_matrix(self, matrix: list, directed: bool) -> list:
+    def _copy_matrix(self, matrix: list) -> list:
         '''
         Copy the adjacency matrix with floating point values. 
         If the graph is undirected, the matrix is made symmetric by copying the upper triangle.
@@ -90,13 +92,12 @@ class AdjacencyMatrix(Graph):
 
         Args:
             matrix (list): The matrix to be copied.
-            directed (bool): True if the graph is directed, False otherwise.
 
         Returns:
-            out (list): The symmetric matrix.
+            out (list): The matrix.
         '''
 
-        if directed:
+        if not self.directed:
             return [[matrix[i][j] if i <= j else matrix[j][i]
                  for j in range(self.num_vertices)] for i in range(self.num_vertices)]
         return [[float(matrix[i][j]) for j in range(self.num_vertices)]
@@ -112,7 +113,7 @@ class AdjacencyMatrix(Graph):
         Raises:
             ValueError: If the vertex does not exist.
         '''
-        if x >= self.num_vertices or x < 0:
+        if x >= self.num_vertices or x < 0 or not isinstance(x, int):
             raise ValueError(f'The vertex {x} does not exist.')
 
     def has_edge(self, x: int, y: int) -> bool:
@@ -173,7 +174,7 @@ class AdjacencyMatrix(Graph):
 
         self.matrix[x][y] = float(w)
 
-        if self.directed:
+        if not self.directed:
             self.matrix[y][x] = float(w)
 
     def remove_edge(self, x: int, y: int) -> None:
@@ -193,7 +194,7 @@ class AdjacencyMatrix(Graph):
 
         self.matrix[x][y] = self.no_edge_value
 
-        if self.directed:
+        if not self.directed:
             self.matrix[y][x] = self.no_edge_value
 
     def add_vertex(self) -> None:
