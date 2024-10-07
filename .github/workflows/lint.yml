@@ -16,4 +16,4 @@ jobs:
         
     - name: Analysing the code with pylint
       run: |
-        pylint .\pystrukts --ignore=_version.py
+        pylint . --ignore=_version.py
