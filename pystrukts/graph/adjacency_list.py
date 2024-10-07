@@ -218,8 +218,8 @@ class AdjacencyList(Graph):
         self.num_vertices -= 1
 
         for u in range(self.num_vertices):
-            for v in self.vertex_list[u]:
-                if v >= x:
+            self.vertex_list[u].discard(x)
+            for v in range(x + 1, self.num_vertices + 1):
+                if v in self.vertex_list[u]:
                     self.vertex_list[u].discard(v)
-                    if v > x:
-                        self.vertex_list[u].add(v - 1)
+                    self.vertex_list[u].add(v - 1)
