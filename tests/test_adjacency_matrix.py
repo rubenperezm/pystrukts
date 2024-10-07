@@ -48,6 +48,7 @@ def test_copy():
     assert graph2.num_vertices == 3
     assert graph2.directed == False
     assert graph2.matrix == matrix
+    assert graph2.no_edge_value == 0
 
 def test_has_edge():
     matrix = [[0, 1, 0], [0, 0, 0], [1, 0, 1]]

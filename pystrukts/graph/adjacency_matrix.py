@@ -79,7 +79,8 @@ class AdjacencyMatrix(Graph):
             out (AdjacencyMatrix): The copy of the graph.
         '''
 
-        return AdjacencyMatrix(directed = self.directed, matrix = self.matrix)
+        return AdjacencyMatrix(directed = self.directed,
+                               matrix = self.matrix, no_edge_value = self.no_edge_value)
 
     def _copy_matrix(self, matrix: list, directed: bool) -> list:
         '''
@@ -170,10 +171,10 @@ class AdjacencyMatrix(Graph):
         self._raise_error_if_invalid_vertex(x)
         self._raise_error_if_invalid_vertex(y)
 
-        self.matrix[x][y] = w
+        self.matrix[x][y] = float(w)
 
         if self.directed:
-            self.matrix[y][x] = w
+            self.matrix[y][x] = float(w)
 
     def remove_edge(self, x: int, y: int) -> None:
         '''
