@@ -36,8 +36,8 @@ def test_list_initialization():
 
     assert len(linked_list) == 0
     assert linked_list.iscircular() == False
-    assert linked_list._DoublyLinkedList__head is None
-    assert linked_list._DoublyLinkedList__tail is None
+    assert linked_list._LinkedList__head is None
+    assert linked_list._LinkedList__tail is None
 
 def test_list_str():
     linked_list = DoublyLinkedList()
@@ -83,7 +83,7 @@ def test_list_append_multiple():
     assert linked_list.get(0) == 1
     assert linked_list.get(1) == 2
     assert linked_list.get(2) == 3
-    assert linked_list._DoublyLinkedList__tail.prev.prev == linked_list._DoublyLinkedList__head
+    assert linked_list._LinkedList__tail.prev.prev == linked_list._LinkedList__head
 
 def test_list_prepend():
     linked_list = DoublyLinkedList()
@@ -102,7 +102,7 @@ def test_list_prepend_multiple():
     assert linked_list.get(0) == 3
     assert linked_list.get(1) == 2
     assert linked_list.get(2) == 1
-    assert linked_list._DoublyLinkedList__tail.prev.prev == linked_list._DoublyLinkedList__head
+    assert linked_list._LinkedList__tail.prev.prev == linked_list._LinkedList__head
 
 def test_insert():
     linked_list = DoublyLinkedList()
@@ -116,7 +116,7 @@ def test_insert():
     assert linked_list.get(1) == 2
     assert linked_list.get(2) == 3
     assert linked_list.get(3) == 4
-    assert linked_list._DoublyLinkedList__tail.prev.prev.prev == linked_list._DoublyLinkedList__head
+    assert linked_list._LinkedList__tail.prev.prev.prev == linked_list._LinkedList__head
 
 def test_insert_start():
     linked_list = DoublyLinkedList()
@@ -175,8 +175,8 @@ def test_pop_last():
 
     assert linked_list.pop() == 1
     assert len(linked_list) == 0
-    assert linked_list._DoublyLinkedList__head is None
-    assert linked_list._DoublyLinkedList__tail is None
+    assert linked_list._LinkedList__head is None
+    assert linked_list._LinkedList__tail is None
 
 def test_pop_empty():
     linked_list = DoublyLinkedList()
@@ -193,7 +193,7 @@ def test_popleft():
     assert linked_list.popleft() == 1
     assert len(linked_list) == 2
     assert linked_list.get(0) == 2
-    assert linked_list._DoublyLinkedList__head.data == 2
+    assert linked_list._LinkedList__head.data == 2
 
 def test_popleft_last():
     linked_list = DoublyLinkedList()
@@ -201,8 +201,8 @@ def test_popleft_last():
 
     assert linked_list.popleft() == 1
     assert len(linked_list) == 0
-    assert linked_list._DoublyLinkedList__head is None
-    assert linked_list._DoublyLinkedList__tail is None
+    assert linked_list._LinkedList__head is None
+    assert linked_list._LinkedList__tail is None
 
 def test_popleft_empty():
     linked_list = DoublyLinkedList()
@@ -222,7 +222,7 @@ def test_remove():
     assert linked_list.get(0) == 1
     assert linked_list.get(1) == 2
     assert linked_list.get(2) == 4
-    assert linked_list._DoublyLinkedList__tail.prev.prev == linked_list._DoublyLinkedList__head
+    assert linked_list._LinkedList__tail.prev.prev == linked_list._LinkedList__head
 
 def test_remove_start():
     linked_list = DoublyLinkedList()
@@ -234,7 +234,7 @@ def test_remove_start():
     assert len(linked_list) == 2
     assert linked_list.get(0) == 2
     assert linked_list.get(1) == 3
-    assert linked_list._DoublyLinkedList__tail.prev == linked_list._DoublyLinkedList__head
+    assert linked_list._LinkedList__tail.prev == linked_list._LinkedList__head
 
 def test_remove_end():
     linked_list = DoublyLinkedList()
@@ -246,7 +246,7 @@ def test_remove_end():
     assert len(linked_list) == 2
     assert linked_list.get(0) == 1
     assert linked_list.get(1) == 2
-    assert linked_list._DoublyLinkedList__tail.prev == linked_list._DoublyLinkedList__head
+    assert linked_list._LinkedList__tail.prev == linked_list._LinkedList__head
 
 def test_remove_negative_index():
     linked_list = DoublyLinkedList()
@@ -341,10 +341,10 @@ def test_append_circular():
     linked_list.append(2)
     linked_list.append(3)
 
-    assert linked_list._DoublyLinkedList__head.data == 1
-    assert linked_list._DoublyLinkedList__tail.data == 3
-    assert linked_list._DoublyLinkedList__tail.next == linked_list._DoublyLinkedList__head
-    assert linked_list._DoublyLinkedList__head.prev == linked_list._DoublyLinkedList__tail
+    assert linked_list._LinkedList__head.data == 1
+    assert linked_list._LinkedList__tail.data == 3
+    assert linked_list._LinkedList__tail.next == linked_list._LinkedList__head
+    assert linked_list._LinkedList__head.prev == linked_list._LinkedList__tail
 
 def test_appendleft_circular():
     linked_list = DoublyLinkedList(circular=True)
@@ -352,10 +352,10 @@ def test_appendleft_circular():
     linked_list.appendleft(2)
     linked_list.appendleft(3)
 
-    assert linked_list._DoublyLinkedList__head.data == 3
-    assert linked_list._DoublyLinkedList__tail.data == 1
-    assert linked_list._DoublyLinkedList__tail.next == linked_list._DoublyLinkedList__head
-    assert linked_list._DoublyLinkedList__head.prev == linked_list._DoublyLinkedList__tail
+    assert linked_list._LinkedList__head.data == 3
+    assert linked_list._LinkedList__tail.data == 1
+    assert linked_list._LinkedList__tail.next == linked_list._LinkedList__head
+    assert linked_list._LinkedList__head.prev == linked_list._LinkedList__tail
 
 def test_pop_circular():
     linked_list = DoublyLinkedList(circular=True)
@@ -364,10 +364,10 @@ def test_pop_circular():
     linked_list.append(3)
 
     assert linked_list.pop() == 3
-    assert linked_list._DoublyLinkedList__head.data == 1
-    assert linked_list._DoublyLinkedList__tail.data == 2
-    assert linked_list._DoublyLinkedList__tail.next == linked_list._DoublyLinkedList__head
-    assert linked_list._DoublyLinkedList__head.prev == linked_list._DoublyLinkedList__tail
+    assert linked_list._LinkedList__head.data == 1
+    assert linked_list._LinkedList__tail.data == 2
+    assert linked_list._LinkedList__tail.next == linked_list._LinkedList__head
+    assert linked_list._LinkedList__head.prev == linked_list._LinkedList__tail
 
 def test_popleft_circular():
     linked_list = DoublyLinkedList(circular=True)
@@ -376,7 +376,7 @@ def test_popleft_circular():
     linked_list.append(3)
 
     assert linked_list.popleft() == 1
-    assert linked_list._DoublyLinkedList__head.data == 2
-    assert linked_list._DoublyLinkedList__tail.data == 3
-    assert linked_list._DoublyLinkedList__tail.next == linked_list._DoublyLinkedList__head
-    assert linked_list._DoublyLinkedList__head.prev == linked_list._DoublyLinkedList__tail
+    assert linked_list._LinkedList__head.data == 2
+    assert linked_list._LinkedList__tail.data == 3
+    assert linked_list._LinkedList__tail.next == linked_list._LinkedList__head
+    assert linked_list._LinkedList__head.prev == linked_list._LinkedList__tail
