@@ -29,4 +29,4 @@ A Python library for data structures. This library provides more than 20 advance
 - [x] Trie
 - [x] Max Heap
 - [x] Graph (Adjacency Matrix)
-- [ ] Graph (Adjacency List)
+- [x] Graph (Adjacency List)
