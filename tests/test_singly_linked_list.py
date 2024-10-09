@@ -34,8 +34,8 @@ def test_list_initialization():
 
     assert len(linked_list) == 0
     assert linked_list.iscircular() == False
-    assert linked_list._SinglyLinkedList__head is None
-    assert linked_list._SinglyLinkedList__tail is None
+    assert linked_list._LinkedList__head is None
+    assert linked_list._LinkedList__tail is None
 
 def test_list_str():
     linked_list = SinglyLinkedList()
@@ -170,8 +170,8 @@ def test_pop_last():
 
     assert linked_list.pop() == 1
     assert len(linked_list) == 0
-    assert linked_list._SinglyLinkedList__head is None
-    assert linked_list._SinglyLinkedList__tail is None
+    assert linked_list._LinkedList__head is None
+    assert linked_list._LinkedList__tail is None
 
 def test_pop_empty():
     linked_list = SinglyLinkedList()
@@ -195,8 +195,8 @@ def test_popleft_last():
 
     assert linked_list.popleft() == 1
     assert len(linked_list) == 0
-    assert linked_list._SinglyLinkedList__head is None
-    assert linked_list._SinglyLinkedList__tail is None
+    assert linked_list._LinkedList__head is None
+    assert linked_list._LinkedList__tail is None
 
 def test_popleft_empty():
     linked_list = SinglyLinkedList()
@@ -332,9 +332,9 @@ def test_append_circular():
     linked_list.append(2)
     linked_list.append(3)
 
-    assert linked_list._SinglyLinkedList__head.data == 1
-    assert linked_list._SinglyLinkedList__tail.data == 3
-    assert linked_list._SinglyLinkedList__tail.next == linked_list._SinglyLinkedList__head
+    assert linked_list._LinkedList__head.data == 1
+    assert linked_list._LinkedList__tail.data == 3
+    assert linked_list._LinkedList__tail.next == linked_list._LinkedList__head
 
 def test_appendleft_circular():
     linked_list = SinglyLinkedList(circular=True)
@@ -342,9 +342,9 @@ def test_appendleft_circular():
     linked_list.appendleft(2)
     linked_list.appendleft(3)
 
-    assert linked_list._SinglyLinkedList__head.data == 3
-    assert linked_list._SinglyLinkedList__tail.data == 1
-    assert linked_list._SinglyLinkedList__tail.next == linked_list._SinglyLinkedList__head
+    assert linked_list._LinkedList__head.data == 3
+    assert linked_list._LinkedList__tail.data == 1
+    assert linked_list._LinkedList__tail.next == linked_list._LinkedList__head
 
 def test_pop_circular():
     linked_list = SinglyLinkedList(circular=True)
@@ -353,9 +353,9 @@ def test_pop_circular():
     linked_list.append(3)
 
     assert linked_list.pop() == 3
-    assert linked_list._SinglyLinkedList__head.data == 1
-    assert linked_list._SinglyLinkedList__tail.data == 2
-    assert linked_list._SinglyLinkedList__tail.next == linked_list._SinglyLinkedList__head
+    assert linked_list._LinkedList__head.data == 1
+    assert linked_list._LinkedList__tail.data == 2
+    assert linked_list._LinkedList__tail.next == linked_list._LinkedList__head
 
 def test_popleft_circular():
     linked_list = SinglyLinkedList(circular=True)
@@ -364,6 +364,6 @@ def test_popleft_circular():
     linked_list.append(3)
 
     assert linked_list.popleft() == 1
-    assert linked_list._SinglyLinkedList__head.data == 2
-    assert linked_list._SinglyLinkedList__tail.data == 3
-    assert linked_list._SinglyLinkedList__tail.next == linked_list._SinglyLinkedList__head
+    assert linked_list._LinkedList__head.data == 2
+    assert linked_list._LinkedList__tail.data == 3
+    assert linked_list._LinkedList__tail.next == linked_list._LinkedList__head
