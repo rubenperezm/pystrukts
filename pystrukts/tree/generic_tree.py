@@ -17,7 +17,8 @@ class GenericTree:
     '''
     def __init__(self, data: Any, max_children: int = 0):
         '''
-        Initializes the tree. If max_children is less than 2, there are no restrictions on the number of children.
+        Initializes the tree. If max_children is less than 2,
+        there are no restrictions on the number of children.
 
         Args:
             data (Any): The data of the root node.
@@ -71,7 +72,7 @@ class GenericTree:
             list: The children of the node.
         '''
         return self.children.copy()
-    
+
     def get_child(self, index: int) -> 'GenericTree':
         '''
         Returns a child of the node.
