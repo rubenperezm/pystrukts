@@ -27,9 +27,6 @@ class SinglyLinkedNode:
     def __str__(self):
         return f"SinglyLinkedNode({self.data}){' -> ' + str(self.next) if self.next else ''}"
 
-
-class SinglyLinkedList(LinkedList[SinglyLinkedNode]):
-
 class SinglyLinkedList(LinkedList[SinglyLinkedNode]):
     '''
     SinglyLinkedList Class.
@@ -62,19 +59,11 @@ class SinglyLinkedList(LinkedList[SinglyLinkedNode]):
         super().__init__(SinglyLinkedNode, circular)
 
     def _link(self, node1: SinglyLinkedNode, node2: SinglyLinkedNode):
-        super().__init__(SinglyLinkedNode, circular)
-
-    def _link(self, node1: SinglyLinkedNode, node2: SinglyLinkedNode):
         '''
         Link two nodes.
         Link two nodes.
 
         Args:
-            node1 (SinglyLinkedNode): The first node.
-            node2 (SinglyLinkedNode): The second node.
-        '''
-
-        node1.next = node2
             node1 (SinglyLinkedNode): The first node.
             node2 (SinglyLinkedNode): The second node.
         '''
