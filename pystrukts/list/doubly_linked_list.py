@@ -31,6 +31,7 @@ class DoublyLinkedNode:
 
 @dataclass
 class DoublyLinkedList(LinkedList[DoublyLinkedNode]):
+class DoublyLinkedList(LinkedList[DoublyLinkedNode]):
     '''
     DoublyLinkedList Class.
 
@@ -62,10 +63,22 @@ class DoublyLinkedList(LinkedList[DoublyLinkedNode]):
         super().__init__(DoublyLinkedNode, circular)
 
     def _link(self, node1: DoublyLinkedNode, node2: DoublyLinkedNode):
+        super().__init__(DoublyLinkedNode, circular)
+
+    def _link(self, node1: DoublyLinkedNode, node2: DoublyLinkedNode):
         '''
+        Link two nodes.
         Link two nodes.
 
         Args:
+            node1 (DoublyLinkedNode): The first node.
+            node2 (DoublyLinkedNode): The second node.
+        '''
+
+        node1.next = node2
+        if node2:
+            node2.prev = node1
+    
             node1 (DoublyLinkedNode): The first node.
             node2 (DoublyLinkedNode): The second node.
         '''
