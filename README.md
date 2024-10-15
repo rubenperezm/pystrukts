@@ -6,13 +6,27 @@
 <!-- [![Python Versions](https://img.shields.io/pypi/pyversions/pystrukts.svg)](https://pypi.org/project/pystrukts) -->
 
 
-A Python library for data structures. This library provides more than 20 advanced data structures not available in the Python standard library, including:
+A Python library for data structures. This library provides more than 20 advanced data structures not available in the Python standard library.
 
+## Installation
+
+```bash
+pip install pystrukts
+```
+
+## Data Structures
+### Lists
+- [x] Singly Linked Node
 - [x] Singly Linked List
+- [x] Doubly Linked Node
 - [x] Doubly Linked List
 - [x] Circular Linked List (Single, Double)
-- [ ] Generic Tree
-- [ ] Binary Search Tree
+- [ ] Skip List
+
+### Trees
+- [x] Binary Tree
+- [x] Generic Tree
+- [x] Binary Search Tree
 - [ ] Ternary Search Tree
 - [ ] Suffix Tree
 - [ ] AVL Tree
@@ -24,9 +38,12 @@ A Python library for data structures. This library provides more than 20 advance
 - [ ] Interval Tree
 - [ ] Segment Tree
 - [ ] Fenwick Tree
-- [x] Disjoint Set
-- [ ] Skip List
 - [x] Trie
+
+### Graphs
+- [x] Adjacency Matrix
+- [x] Adjacency List
+
+### Others
+- [x] Disjoint Set (Union Find)
 - [x] Max Heap
-- [x] Graph (Adjacency Matrix)
-- [x] Graph (Adjacency List)

@@ -5,6 +5,7 @@ This module implements a Singly Linked List and Node data structures.
 '''
 
 from dataclasses import dataclass
+from typing import Any
 from .linked_list import LinkedList
 
 @dataclass
@@ -13,19 +14,18 @@ class SinglyLinkedNode:
     SinglyLinkedNode Class.
 
     Attributes:
-        data (any): The data stored in the node.
+        data (Any): The data stored in the node.
         next (SinglyLinkedNode): The next node in the list.
 
     Methods:
         `__str__()`: Return the string representation of the node.
     '''
 
-    data: any = None
+    data: Any = None
     next: 'SinglyLinkedNode' = None
 
     def __str__(self):
         return f"SinglyLinkedNode({self.data}){' -> ' + str(self.next) if self.next else ''}"
-
 
 class SinglyLinkedList(LinkedList[SinglyLinkedNode]):
     '''
@@ -44,14 +44,14 @@ class SinglyLinkedList(LinkedList[SinglyLinkedNode]):
         `iscircular()`: Check if the list is circular.
         `_link(node1: Type[T], node2: Type[T])`: Link two nodes.
         `_preprocess_index(index: int)`: Preprocess the index.
-        `insert(data: any, index: int)`: Insert data at the specified index.
-        `append(data: any)`: Append data to the end of the list.
-        `appendleft(data: any)`: Append data to the beginning of the list.
+        `insert(data: Any, index: int)`: Insert data at the specified index.
+        `append(data: Any)`: Append data to the end of the list.
+        `appendleft(data: Any)`: Append data to the beginning of the list.
         `remove(index: int)`: Remove data at the specified index.
         `pop()`: Remove data from the end of the list.
         `popleft()`: Remove data from the beginning of the list.
         `get(index: int)`: Get data at the specified index.
-        `index(data: any)`: Get the index of the specified data.
+        `index(data: Any)`: Get the index of the specified data.
         `clear()`: Clear the list.
     '''
 
@@ -60,6 +60,7 @@ class SinglyLinkedList(LinkedList[SinglyLinkedNode]):
 
     def _link(self, node1: SinglyLinkedNode, node2: SinglyLinkedNode):
         '''
+        Link two nodes.
         Link two nodes.
 
         Args:

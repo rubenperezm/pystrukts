@@ -6,7 +6,7 @@ This module implements a Linked List data structure.
 
 from dataclasses import dataclass
 from abc import ABC, abstractmethod
-from typing import Type, TypeVar, Generic
+from typing import Type, TypeVar, Generic, Any
 
 T = TypeVar('T')
 
@@ -28,14 +28,14 @@ class LinkedList(ABC, Generic[T]):
         `iscircular()`: Check if the list is circular.
         `_link(node1: Type[T], node2: Type[T])`: Link two nodes.
         `_preprocess_index(index: int)`: Preprocess the index.
-        `insert(data: any, index: int)`: Insert data at the specified index.
-        `append(data: any)`: Append data to the end of the list.
-        `appendleft(data: any)`: Append data to the beginning of the list.
+        `insert(data: Any, index: int)`: Insert data at the specified index.
+        `append(data: Any)`: Append data to the end of the list.
+        `appendleft(data: Any)`: Append data to the beginning of the list.
         `remove(index: int)`: Remove data at the specified index.
         `pop()`: Remove data from the end of the list.
         `popleft()`: Remove data from the beginning of the list.
         `get(index: int)`: Get data at the specified index.
-        `index(data: any)`: Get the index of the specified data.
+        `index(data: Any)`: Get the index of the specified data.
         `clear()`: Clear the list.
     '''
 
@@ -72,7 +72,7 @@ class LinkedList(ABC, Generic[T]):
             out (Iterator): The iterator for the list.
 
         Yields:
-            out (any): The data in the list.
+            out (Any): The data in the list.
         '''
 
         current_node = self.__head
@@ -125,12 +125,12 @@ class LinkedList(ABC, Generic[T]):
 
         return index
 
-    def insert(self, data: any, index: int):
+    def insert(self, data: Any, index: int):
         '''
         Insert data at the specified index.
 
         Args:
-            data (any): The data to be inserted.
+            data (Any): The data to be inserted.
             index (int): The index to insert the data.
         
         Raises:
@@ -158,12 +158,12 @@ class LinkedList(ABC, Generic[T]):
 
         self.__length += 1
 
-    def append(self, data: any):
+    def append(self, data: Any):
         '''
         Append data to the end of the list.
 
         Args:
-            data (any): The data to be appended.
+            data (Any): The data to be appended.
         '''
 
         new_node = self.__cls(data)
@@ -181,12 +181,12 @@ class LinkedList(ABC, Generic[T]):
 
         self.__length += 1
 
-    def appendleft(self, data: any):
+    def appendleft(self, data: Any):
         '''
         Append data to the beginning of the list.
 
         Args:
-            data (any): The data to be appended.
+            data (Any): The data to be appended.
         '''
 
         new_node = self.__cls(data)
@@ -212,7 +212,7 @@ class LinkedList(ABC, Generic[T]):
             index (int): The index to remove the data.
 
         Returns:
-            out (any): The removed data.
+            out (Any): The removed data.
 
         Raises:
             IndexError: If the index is out of bounds.
@@ -243,7 +243,7 @@ class LinkedList(ABC, Generic[T]):
         Extract data from the end of the list.
 
         Returns:
-            out (any): The extracted data.
+            out (Any): The extracted data.
 
         Raises:
             IndexError: If the list is empty.
@@ -275,7 +275,7 @@ class LinkedList(ABC, Generic[T]):
         Extract data from the beginning of the list.
 
         Returns:
-            out (any): The extracted data.
+            out (Any): The extracted data.
 
         Raises:
             IndexError: If the list is empty.
@@ -308,7 +308,7 @@ class LinkedList(ABC, Generic[T]):
             index (int): The index to get the data.
 
         Returns:
-            out (any): The data at the specified index.
+            out (Any): The data at the specified index.
 
         Raises:
             IndexError: If the index is out of bounds.
@@ -322,12 +322,12 @@ class LinkedList(ABC, Generic[T]):
 
         return current_node.data
 
-    def index(self, data: any):
+    def index(self, data: Any):
         '''
         Get the index of the first occurrence of the specified data.
 
         Args:
-            data (any): The data to search for.
+            data (Any): The data to search for.
 
         Returns:
             out (int): The index of the specified data.

@@ -4,10 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pystrukts"
-description = "Advanced data structures for Python."
 readme = "README.md"
 requires-python = ">=3.8"
-dynamic = ["version"]
+dynamic = ["version", "description", "authors", "urls", "keywords"]
 license = { file = "LICENSE" }
 classifiers = [
     "License :: OSI Approved :: Apache Software License",
@@ -20,10 +19,6 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-]
-
-authors = [
-    { name = "Rubén Pérez Mercado", email = "rubenpermerc@gmail.com" }
 ]
 
 [tool.setuptools_scm]
