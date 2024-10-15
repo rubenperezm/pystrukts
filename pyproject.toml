@@ -4,9 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pystrukts"
+description = "Advanced data structures for Python."
+keywords = ["data structures", "structures", "tree", "graph", "list", "heap", "trie", "union find", "pystrukts"]
 readme = "README.md"
 requires-python = ">=3.8"
-dynamic = ["version", "description", "authors", "urls", "keywords"]
+dynamic = ["version"]
 license = { file = "LICENSE" }
 classifiers = [
     "License :: OSI Approved :: Apache Software License",
@@ -20,6 +22,15 @@ classifiers = [
 ]
 dependencies = [
 ]
+
+authors = [
+    { name = "Rubén Pérez Mercado", email = "rubenpermerc@gmail.com" }
+]
+
+[project.urls]
+Repository = "https://github.com/rubenperezm/pystrukts"
+Issues = "https://github.com/rubenperezm/pystrukts/issues"
+Changelog = "https://github.com/rubenperezm/pystrukts/blob/main/CHANGELOG.md"
 
 [tool.setuptools_scm]
 write_to = "pystrukts/_version.py"
