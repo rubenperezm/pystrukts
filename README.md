@@ -24,7 +24,7 @@ pip install pystrukts
 - [ ] Skip List
 
 ### Trees
-- [ ] Binary Tree
+- [x] Binary Tree
 - [x] Generic Tree
 - [ ] Binary Search Tree
 - [ ] Ternary Search Tree
